@@ -1,0 +1,16 @@
+{
+  "name": "showcase",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "format": "prettier --write \"{packages,apps}/**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\""
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "prettier": "^2.8.3",
+    "prettier-plugin-tailwindcss": "^0.2.2",
+    "turbo": "^1.7.0"
+  }
+}

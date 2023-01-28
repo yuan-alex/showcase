@@ -1,0 +1,67 @@
+{
+  "name": "@showcase/cli",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "exports": "./dist/cli/main.js",
+  "private": true,
+  "keywords": [
+    "cli"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.16"
+  },
+  "bin": {
+    "showcase": "./dist/cli/main.js"
+  },
+  "scripts": {
+    "dev": "pnpm build && pnpm cli dev",
+    "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000",
+    "build": "pnpm build:cli && pnpm build:renderer && pnpm build:tailwind",
+    "build:cli": "tsx ./scripts/build-cli.mts",
+    "build:renderer": "tsx ./scripts/build-renderer.mts",
+    "build:tailwind": "tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css",
+    "cli": "node ./dist/cli/main.js"
+  },
+  "dependencies": {
+    "@componentdriven/csf": "0.0.2-alpha.0",
+    "@heroicons/react": "^2.0.14",
+    "@showcase/react": "workspace:*",
+    "@uiw/react-codemirror": "^4.19.7",
+    "@vitejs/plugin-react": "^3.0.1",
+    "chalk": "^5.2.0",
+    "chokidar": "^3.5.3",
+    "fs-extra": "^11.1.0",
+    "globby": "^13.1.3",
+    "handlebars": "^4.7.7",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-colorful": "^5.6.1",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-router-dom": "^6.8.0",
+    "react-shadow": "^20.0.0",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@deanc/esbuild-plugin-postcss": "^1.0.2",
+    "@primer/react": "^35.18.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/yargs": "^17.0.20",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
+    "esbuild": "^0.17.5",
+    "postcss": "^8.4.21",
+    "rimraf": "^4.1.2",
+    "styled-components": "^5.3.6",
+    "tailwindcss": "^3.2.4",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4"
+  }
+}

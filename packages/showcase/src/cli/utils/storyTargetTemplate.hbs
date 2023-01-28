@@ -1,0 +1,14 @@
+// generated on {{ timestamp }}
+import { ComponentMeta, ComponentStory } from "@showcase/react";
+{{#each imports}}
+import * as {{ this.name }} from "{{ this.path }}";
+{{/each}}
+
+interface Story {
+  [StoryName: string]: ComponentStory<any>;
+  // @ts-ignore
+  default: ComponentMeta<any>;
+}
+
+// @ts-ignore
+export const stories: { [ComponentName: string]: Story } = { {{ componentNames }} };
