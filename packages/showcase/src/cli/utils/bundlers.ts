@@ -25,6 +25,11 @@ export const startDevServer = async () => {
   }
 };
 
+const bundleTargetPath = path.resolve(
+  process.cwd(),
+  "node_modules/.cache/showcase/bundleTarget.tsx",
+);
+
 const startViteServer = async (showcaseConfig: any) => {
   console.log("Starting Vite dev server...");
   const defaultConfig: vite.UserConfig = {
@@ -35,19 +40,17 @@ const startViteServer = async (showcaseConfig: any) => {
     },
     resolve: {
       alias: {
-        "@showcase/internal/stories": path.resolve(
-          process.cwd(),
-          "node_modules/.cache/showcase/bundleTarget.tsx",
-        ),
+        "@showcase/internal/stories": bundleTargetPath,
       },
     },
     plugins: [viteReact()],
   };
-  const config =
-    (await showcaseConfig?.bundler?.viteFinal(defaultConfig, {
-      command: "serve",
-      mode: "development",
-    })) || defaultConfig;
+  const config = showcaseConfig?.bundler?.configFinal
+    ? await showcaseConfig?.bundler?.configFinal(defaultConfig, {
+        command: "serve",
+        mode: "development",
+      })
+    : defaultConfig;
   const server = await vite.createServer(config);
   await server.listen();
   server.printUrls();
