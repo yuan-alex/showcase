@@ -1,7 +1,7 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { HexColorPicker } from "react-colorful";
 
-import { ArgType } from "@showcase/react";
+import { ArgType } from "@showcasejs/react";
 
 interface ArgsEditorProps {
   defaultArgs: any;

@@ -40,7 +40,7 @@ const startViteServer = async (showcaseConfig: any) => {
     },
     resolve: {
       alias: {
-        "@showcase/internal/stories": bundleTargetPath,
+        "@showcasejs/internal/stories": bundleTargetPath,
       },
     },
     plugins: [viteReact()],

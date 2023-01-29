@@ -1,4 +1,4 @@
-import { stories } from "@showcase/internal/stories";
+import { stories } from "@showcasejs/internal/stories";
 import { Link } from "react-router-dom";
 import {
   ChevronDownIcon,

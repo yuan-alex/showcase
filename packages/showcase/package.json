@@ -27,7 +27,7 @@
   "dependencies": {
     "@componentdriven/csf": "0.0.2-alpha.0",
     "@heroicons/react": "^2.0.14",
-    "@showcase/react": "workspace:*",
+    "@showcasejs/react": "workspace:*",
     "@uiw/react-codemirror": "^4.19.7",
     "@vitejs/plugin-react": "^3.0.1",
     "chalk": "^5.2.0",

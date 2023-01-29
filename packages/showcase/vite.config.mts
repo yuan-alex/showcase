@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@showcase/internal/stories": path.resolve(
+      "@showcasejs/internal/stories": path.resolve(
         process.cwd(),
         "node_modules/.cache/showcase/bundleTarget.tsx",
       ),

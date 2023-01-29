@@ -1,4 +1,4 @@
-import { stories } from "@showcase/internal/stories";
+import { stories } from "@showcasejs/internal/stories";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { ArgsEditor } from "./ArgsEditor.js";
