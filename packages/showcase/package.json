@@ -15,6 +15,9 @@
   "bin": {
     "showcase": "./dist/cli/main.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "pnpm build && pnpm cli dev",
     "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000",
