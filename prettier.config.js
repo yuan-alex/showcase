@@ -6,6 +6,7 @@ module.exports = {
   importOrder: ["^@showcasejs/(.*)$", "^[./]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  endOfLine: "lf",
   plugins: [
     require.resolve("@trivago/prettier-plugin-sort-imports"),
     require.resolve("prettier-plugin-tailwindcss"),
