@@ -12,12 +12,5 @@ interface DevConfig {
 }
 
 export const startDev = async (config: DevConfig) => {
-  const storyPaths = await getStoryComponentPaths();
-  const watcher = chokidar.watch(path.join(process.cwd(), "src"));
-  createCompileTarget(storyPaths);
-  watcher.on("change", async (path) => {
-    console.log(`Detected change to ${path}`);
-    createCompileTarget(storyPaths);
-  });
   await startDevServer();
 };

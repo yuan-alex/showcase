@@ -1,6 +1,9 @@
-import { fileURLToPath } from "node:url";
-import fs from "node:fs";
 import esbuild from "esbuild";
+import fsExtra from "fs-extra";
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
+
+fsExtra.removeSync(fileURLToPath(new URL("../dist/renderer", import.meta.url)));
 
 esbuild
   .build({

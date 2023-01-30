@@ -1,12 +1,8 @@
-/*
-  This instance of the Vite config is used for quick development testing.
-  Use `pnpm vite` to start the dev server.
-*/
-
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import url from "node:url";
+import { defineConfig } from "vite";
+
 import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase";
 
 export default defineConfig({
@@ -19,13 +15,14 @@ export default defineConfig({
   build: {
     outDir: url.fileURLToPath(new URL("./dist/renderer", import.meta.url)),
   },
-  plugins: [react()],
   resolve: {
-    alias: {
-      "@showcasejs/internal/stories": path.resolve(
-        process.cwd(),
-        "node_modules/.cache/showcase/bundleTarget.tsx",
-      ),
-    },
+    alias: [
+      {
+        find: "@showcasejs/internal/stories",
+        replacement: "virtual:@showcasejs/internal/stories",
+      },
+      { find: "@", replacement: path.resolve(process.cwd()) },
+    ],
   },
+  plugins: [react(), showcaseStoriesPlugin()],
 });

@@ -1,9 +1,14 @@
 import viteReactPlugin from "@vitejs/plugin-react";
+import chalk from "chalk";
+import chokidar from "chokidar";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as vite from "vite";
 
 import { getShowcaseConfig } from "./utils.js";
+import viteReactShowcasePlugin, {
+  resolvedVirtualModuleId,
+} from "./vite-plugin-react-showcase.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -45,10 +50,10 @@ const startViteServer = async (showcaseConfig: any) => {
           find: "@showcasejs/internal/stories",
           replacement: "virtual:@showcasejs/internal/stories",
         },
-        { find: "@", replacement: process.cwd() },
+        { find: "@", replacement: path.resolve(process.cwd()) },
       ],
     },
-    plugins: [viteReactPlugin()],
+    plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
   };
   const config = showcaseConfig?.bundler?.configFinal
     ? await showcaseConfig?.bundler?.configFinal(defaultConfig, {
@@ -59,4 +64,19 @@ const startViteServer = async (showcaseConfig: any) => {
   const server = await vite.createServer(config);
   await server.listen();
   server.printUrls();
+
+  const storyFileCreateOrDeleteCallback = (path: string, event: string) => {
+    const storyModule = server.moduleGraph.getModuleById(
+      resolvedVirtualModuleId,
+    );
+    if (storyModule) {
+      server.reloadModule(storyModule);
+    }
+  };
+
+  const watcher = chokidar.watch(path.join(process.cwd(), "**/*.stories.*"));
+  watcher.on("add", (path) => storyFileCreateOrDeleteCallback(path, "add"));
+  watcher.on("unlink", (path) =>
+    storyFileCreateOrDeleteCallback(path, "unlink"),
+  );
 };

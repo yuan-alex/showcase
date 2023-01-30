@@ -5,7 +5,7 @@ export const BlankStory = () => {
       <p className="text-lg">
         Showcase is a{" "}
         <a className="underline" href="https://github.com/ComponentDriven/csf">
-          Component Story Format
+          Storybook
         </a>{" "}
         compatible UI component viewer in pre-alpha built for performance and
         bundler interoperability. Currently, Showcase is powered by Vite,

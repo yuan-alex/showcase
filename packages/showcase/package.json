@@ -20,11 +20,12 @@
   ],
   "scripts": {
     "dev": "pnpm build && pnpm cli dev",
+    "dev:cli": "pnpm build:cli && pnpm cli dev",
     "dev:renderer": "pnpm vite",
     "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000",
-    "build": "pnpm build:cli && pnpm build:renderer && pnpm build:tailwind",
+    "build": "pnpm build:cli && pnpm build:renderer",
     "build:cli": "tsx ./scripts/build-cli.mts",
-    "build:renderer": "tsx ./scripts/build-renderer.mts",
+    "build:renderer": "tsx ./scripts/build-renderer.mts && build:tailwind",
     "build:tailwind": "tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css",
     "cli": "node ./dist/cli/main.js"
   },

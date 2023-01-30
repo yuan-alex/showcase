@@ -3,7 +3,8 @@ import fsExtra from "fs-extra";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
-fsExtra.removeSync(fileURLToPath(new URL("../dist", import.meta.url)));
+
+fsExtra.removeSync(fileURLToPath(new URL("../dist/cli", import.meta.url)));
 
 esbuild.buildSync({
   entryPoints: [fileURLToPath(new URL("../src/cli/cli.ts", import.meta.url))],
