@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "format": "prettier --write \"{packages,apps}/**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\""
+    "format": "prettier --write \"{packages,apps}/**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\" --config prettier.config.js"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",

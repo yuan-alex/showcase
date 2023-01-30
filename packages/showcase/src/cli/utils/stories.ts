@@ -1,3 +1,4 @@
+import esbuild from "esbuild";
 import fs from "fs-extra";
 import { globby } from "globby";
 import handlebars from "handlebars";
@@ -27,7 +28,7 @@ export const getStoryComponentPaths = async (): Promise<StoryPathsObject> => {
 export const createCompileTarget = (storyPaths: StoryPathsObject) => {
   const imports = Object.keys(storyPaths).map((componentName) => ({
     name: componentName,
-    path: `../../../${storyPaths[componentName].path}`,
+    path: `@/${storyPaths[componentName].path}`,
   }));
   const componentNames = Object.keys(storyPaths).map((storyId) => storyId);
   const template = handlebars.compile(
@@ -41,12 +42,16 @@ export const createCompileTarget = (storyPaths: StoryPathsObject) => {
     imports,
     componentNames,
   });
+  const compiledJs = esbuild.transformSync(compiled, {
+    format: "esm",
+    loader: "tsx",
+  }).code;
   fs.outputFileSync(
     path.resolve(
       process.cwd(),
       "node_modules/.cache/showcase/bundleTarget.tsx",
     ),
-    compiled,
+    compiledJs,
   );
-  return compiled;
+  return compiledJs;
 };

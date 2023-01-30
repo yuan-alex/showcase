@@ -1,11 +1,12 @@
-import { stories } from "@showcasejs/internal/stories";
-import { Link } from "react-router-dom";
 import {
+  BookmarkIcon,
   ChevronDownIcon,
   ChevronRightIcon,
-  BookmarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { stories } from "@showcasejs/internal/stories";
 
 const SidebarComponent = ({
   storyComponentName,

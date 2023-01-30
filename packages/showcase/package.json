@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "dev": "pnpm build && pnpm cli dev",
+    "dev:renderer": "pnpm vite",
     "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000",
     "build": "pnpm build:cli && pnpm build:renderer && pnpm build:tailwind",
     "build:cli": "tsx ./scripts/build-cli.mts",

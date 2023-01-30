@@ -18,7 +18,8 @@
     "paths": {
       "@showcasejs/internal/stories": [
         "./node_modules/.cache/showcase/bundleTarget.ts"
-      ]
+      ],
+      "@/*": ["./*"]
     }
   },
   "include": ["src/**/*", "dist/stories/**/*"]

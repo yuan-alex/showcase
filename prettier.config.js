@@ -3,11 +3,11 @@ module.exports = {
   semi: true,
   singleQuote: false,
   trailingComma: "all",
-  importOrder: ["^[./]"],
+  importOrder: ["^@showcasejs/(.*)$", "^[./]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   plugins: [
-    require("@trivago/prettier-plugin-sort-imports"),
-    require("prettier-plugin-tailwindcss"),
+    require.resolve("@trivago/prettier-plugin-sort-imports"),
+    require.resolve("prettier-plugin-tailwindcss"),
   ],
 };

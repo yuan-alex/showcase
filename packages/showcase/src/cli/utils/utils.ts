@@ -1,5 +1,5 @@
-import path from "node:path";
 import fs from "fs-extra";
+import path from "node:path";
 import url from "node:url";
 
 export const configPath = path.resolve(process.cwd(), ".showcase/config.js");

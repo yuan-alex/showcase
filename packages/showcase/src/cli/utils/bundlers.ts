@@ -1,8 +1,9 @@
+import viteReactPlugin from "@vitejs/plugin-react";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as vite from "vite";
+
 import { getShowcaseConfig } from "./utils.js";
-import viteReact from "@vitejs/plugin-react";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,11 +40,15 @@ const startViteServer = async (showcaseConfig: any) => {
       port: 3000,
     },
     resolve: {
-      alias: {
-        "@showcasejs/internal/stories": bundleTargetPath,
-      },
+      alias: [
+        {
+          find: "@showcasejs/internal/stories",
+          replacement: "virtual:@showcasejs/internal/stories",
+        },
+        { find: "@", replacement: process.cwd() },
+      ],
     },
-    plugins: [viteReact()],
+    plugins: [viteReactPlugin()],
   };
   const config = showcaseConfig?.bundler?.configFinal
     ? await showcaseConfig?.bundler?.configFinal(defaultConfig, {
