@@ -1,5 +1,4 @@
 import viteReactPlugin from "@vitejs/plugin-react";
-import chalk from "chalk";
 import chokidar from "chokidar";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
