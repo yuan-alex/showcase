@@ -1,8 +1,6 @@
-import esbuild from "esbuild";
 import fs from "fs-extra";
 import { globby } from "globby";
 import handlebars from "handlebars";
-import path from "node:path";
 
 interface StoryPathsObject {
   [storyId: string]: {
@@ -42,16 +40,5 @@ export const createCompileTarget = (storyPaths: StoryPathsObject) => {
     imports,
     componentNames,
   });
-  const compiledJs = esbuild.transformSync(compiled, {
-    format: "esm",
-    loader: "tsx",
-  }).code;
-  fs.outputFileSync(
-    path.resolve(
-      process.cwd(),
-      "node_modules/.cache/showcase/bundleTarget.tsx",
-    ),
-    compiledJs,
-  );
-  return compiledJs;
+  return compiled;
 };

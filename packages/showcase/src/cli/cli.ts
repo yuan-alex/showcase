@@ -6,21 +6,9 @@ import { startDev } from "./commands.js";
 yargs(hideBin(process.argv))
   .scriptName("showcase")
   .usage("$0 <cmd> [args]")
-  .command(
-    "dev",
-    "Run showcase in development mode",
-    (yargs) => {
-      return yargs.option("port", {
-        alias: "p",
-        type: "number",
-        default: 3000,
-      });
-    },
-    async (argv) => {
-      console.log(`Running showcase in development mode on port ${argv.port}`);
-      await startDev({ port: argv.port });
-    },
-  )
+  .command("dev", "Run showcase in development mode", async (argv) => {
+    await startDev();
+  })
   .command(
     "build",
     "Build static production showcase instance",

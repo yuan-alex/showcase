@@ -35,6 +35,7 @@
     "@showcasejs/react": "workspace:*",
     "@uiw/react-codemirror": "^4.19.7",
     "@vitejs/plugin-react": "^3.0.1",
+    "boxen": "^7.0.1",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "fs-extra": "^11.1.0",

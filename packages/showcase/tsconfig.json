@@ -14,13 +14,7 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "paths": {
-      "@showcasejs/internal/stories": [
-        "./node_modules/.cache/showcase/bundleTarget.ts"
-      ],
-      "@/*": ["./*"]
-    }
+    "strict": true
   },
   "include": ["src/**/*", "dist/stories/**/*"]
 }

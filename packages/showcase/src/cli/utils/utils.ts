@@ -1,19 +1,12 @@
+import chalk from "chalk";
 import fs from "fs-extra";
 import path from "node:path";
 import url from "node:url";
 
+import { ShowcaseConfig } from "../../api/api.js";
+
 export const configPath = path.resolve(process.cwd(), ".showcase/config.js");
 export const configUrl = url.pathToFileURL(configPath).toString();
-
-interface ShowcaseConfig {
-  bundler?: {
-    type?: "webpack5" | "webpack4" | "vite4" | "parcel2";
-    configFinal?: (
-      config: any,
-      { command, mode }: { command: string; mode: string },
-    ) => any;
-  };
-}
 
 export const getShowcaseConfig = async () => {
   if (!fs.existsSync(configPath)) {
@@ -21,4 +14,8 @@ export const getShowcaseConfig = async () => {
   }
   const config = await import(configUrl);
   return config.default as ShowcaseConfig;
+};
+
+export const createShowcaseLog = (log: string) => {
+  console.log(`${chalk.blue("[showcase]")} ${log}`);
 };
