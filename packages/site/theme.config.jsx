@@ -4,7 +4,7 @@ export default {
     link: "https://github.com/yuan-alex/showcase",
   },
   docsRepositoryBase:
-    "https://github.com/yuan-alex/showcase/blob/packages/site/pages",
+    "https://github.com/yuan-alex/showcase/blob/main/packages/site",
   useNextSeoProps() {
     return {
       titleTemplate: "%s - Showcase",
