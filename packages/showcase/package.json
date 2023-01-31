@@ -24,7 +24,7 @@
     "dev:cli": "pnpm build:cli && pnpm cli dev",
     "dev:renderer": "pnpm vite",
     "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000",
-    "build": "pnpm build:cli && pnpm build:renderer",
+    "build": "pnpm build:api && pnpm build:cli && pnpm build:renderer",
     "build:api": "tsup ./src/api/api.ts --out-dir ./dist/api --dts",
     "build:cli": "tsx ./scripts/build-cli.mts",
     "build:renderer": "tsx ./scripts/build-renderer.mts && build:tailwind",
