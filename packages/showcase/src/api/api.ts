@@ -1,7 +1,7 @@
 import { UserConfig } from "vite";
 
 export interface ShowcaseConfig {
-  stories: string[];
+  stories?: string[];
   server?: {
     port?: number;
     host?: string;

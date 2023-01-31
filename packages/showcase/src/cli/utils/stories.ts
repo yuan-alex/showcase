@@ -2,6 +2,8 @@ import fs from "fs-extra";
 import { globby } from "globby";
 import handlebars from "handlebars";
 
+import { getShowcaseConfig } from "./utils.js";
+
 interface StoryPathsObject {
   [storyId: string]: {
     path: string;
@@ -9,10 +11,9 @@ interface StoryPathsObject {
 }
 
 export const getStoryComponentPaths = async (): Promise<StoryPathsObject> => {
-  const paths = await globby(["src/**/*.stories.tsx"]);
-
+  const config = await getShowcaseConfig();
+  const paths = await globby(config?.stories || ["src/**/*.stories.*"]);
   let pathsObject: StoryPathsObject = {};
-
   paths.forEach((path) => {
     const id = path.split("/").slice(-1)[0].split(".")[0];
     if (pathsObject[id]) {
