@@ -1,0 +1,20 @@
+# Decorators
+
+Adding a decorator to a story will wrap the story in the decorator. In the example below, the story will be wrapped in a `ThemeProvider` component.
+
+```tsx
+import { Button, ThemeProvider } from "@primer/react";
+
+export default {
+  title: "Button",
+  component: Button,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+};
+```
+

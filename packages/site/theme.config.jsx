@@ -1,5 +1,5 @@
 export default {
-  logo: <strong>Showcase</strong>,
+  logo: <strong>Showcase.js</strong>,
   project: {
     link: "https://github.com/yuan-alex/showcase",
   },
@@ -7,9 +7,15 @@ export default {
     "https://github.com/yuan-alex/showcase/blob/main/packages/site",
   useNextSeoProps() {
     return {
-      titleTemplate: "%s - Showcase",
+      titleTemplate: "%s - Showcase.js",
     };
   },
+  head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:image" content="/og.png" />
+    </>
+  ),
   footer: {
     text: (
       <span>

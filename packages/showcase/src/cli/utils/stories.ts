@@ -12,7 +12,9 @@ interface StoryPathsObject {
 
 export const getStoryComponentPaths = async (): Promise<StoryPathsObject> => {
   const config = await getShowcaseConfig();
-  const paths = await globby(config?.stories || ["src/**/*.stories.*"]);
+  const paths = await globby(
+    config?.stories || ["src/**/*.stories.{js,jsx,ts,tsx}"],
+  );
   let pathsObject: StoryPathsObject = {};
   paths.forEach((path) => {
     const id = path.split("/").slice(-1)[0].split(".")[0];
