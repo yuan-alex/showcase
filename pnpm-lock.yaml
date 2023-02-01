@@ -139,7 +139,6 @@ importers:
 
   packages/site:
     specifiers:
-      '@heroicons/react': ^2.0.14
       '@next/font': 13.1.6
       '@showcasejs/cli': workspace:*
       '@types/node': ^18.11.18
@@ -157,24 +156,23 @@ importers:
       tailwindcss: ^3.2.4
       typescript: ^4.9.5
     dependencies:
-      '@heroicons/react': 2.0.14_react@18.2.0
       '@next/font': 13.1.6
-      '@types/node': 18.11.18
-      '@types/react': 18.0.27
-      '@types/react-dom': 18.0.10
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       nextra: 2.2.14_3vryta7zmbcsw4rrqf4axjqggm
       nextra-theme-docs: 2.2.14_u6qwm625rg3t7ll2t4ybomvrai
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      typescript: 4.9.5
     devDependencies:
       '@showcasejs/cli': link:../showcase
+      '@types/node': 18.11.18
+      '@types/react': 18.0.27
+      '@types/react-dom': 18.0.10
       autoprefixer: 10.4.13_postcss@8.4.21
       eslint: 8.33.0
       eslint-config-next: 13.1.6_4vsywjlpuriuw3tl5oq6zy5a64
       postcss: 8.4.21
       tailwindcss: 3.2.4_postcss@8.4.21
+      typescript: 4.9.5
 
 packages:
 
@@ -2255,6 +2253,7 @@ packages:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
     dependencies:
       '@types/react': 18.0.27
+    dev: true
 
   /@types/react-is/17.0.3:
     resolution: {integrity: sha512-aBTIWg1emtu95bLTLx0cpkxwGW3ueZv71nE2YFBpL8k/z5czEW8yYpOo8Dp+UUAFAtKwNaOsh/ioSeQnWlZcfw==}
@@ -7364,6 +7363,7 @@ packages:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
 
   /uglify-js/3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
