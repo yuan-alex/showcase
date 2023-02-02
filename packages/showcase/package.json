@@ -33,7 +33,7 @@
     "build:cli": "tsup-node ./src/cli/cli.ts --clean --format=esm --target=node14 --out-dir=dist/cli",
     "build:renderer": "tsx ./scripts/build-renderer.mts && pnpm build:tailwind",
     "build:tailwind": "tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css",
-    "cli": "node ./dist/cli/main.js"
+    "cli": "node ./dist/cli/cli.js"
   },
   "peerDependencies": {
     "react": ">=16.14.0",
