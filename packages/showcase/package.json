@@ -1,11 +1,16 @@
 {
   "name": "@showcasejs/cli",
   "version": "0.0.1",
-  "description": "",
+  "description": "Next-generation React stories",
+  "author": "Alex Yuan",
+  "repository": "github:yuan-alex/showcase",
   "type": "module",
-  "exports": "./dist/api/api.cjs",
+  "main": "./dist/api/api.js",
+  "exports": {
+    "require": "./dist/api/api.cjs",
+    "import": "./dist/api/api.js"
+  },
   "types": "./dist/api/api.d.ts",
-  "private": true,
   "keywords": [
     "cli"
   ],
@@ -14,7 +19,7 @@
     "node": ">=14.16"
   },
   "bin": {
-    "showcase": "./dist/cli/main.js"
+    "showcase": "./dist/cli/cli.js"
   },
   "files": [
     "dist"
@@ -24,8 +29,8 @@
     "dev:renderer": "pnpm vite",
     "start:renderer": "vite ./dist/renderer --config=./vite.config.mts --port=3000 && tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css --watch",
     "build": "pnpm build:api && pnpm build:cli && pnpm build:renderer",
-    "build:api": "tsup ./src/api/api.ts --out-dir ./dist/api --dts",
-    "build:cli": "tsx ./scripts/build-cli.mts",
+    "build:api": "tsup ./src/api/api.ts --clean --format=cjs,esm --target=es2015 --out-dir=dist/api --dts",
+    "build:cli": "tsup-node ./src/cli/cli.ts --clean --format=esm --target=node14 --out-dir=dist/cli",
     "build:renderer": "tsx ./scripts/build-renderer.mts && pnpm build:tailwind",
     "build:tailwind": "tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css",
     "cli": "node ./dist/cli/main.js"
