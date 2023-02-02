@@ -4,6 +4,7 @@ Showcase supports args in the same format as Storybook. Use the `argTypes` prope
 
 ```tsx
 import { Button } from "@primer/react";
+import { ComponentMeta, ComponentStory } from "@showcasejs/react";
 
 export default {
   title: "Button",
@@ -23,9 +24,9 @@ export default {
       },
     },
   },
-};
+} as ComponentMeta<typeof Button>;
 
-export const Primary = (args) => <Button {...args} />;
+export const Primary: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 Primary.argTypes = {
   variant: {

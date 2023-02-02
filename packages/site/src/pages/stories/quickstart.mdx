@@ -15,14 +15,16 @@ Showcase uses [CSF](https://github.com/ComponentDriven/csf) (Component Story For
 ### Basic Example
 
 ```tsx
+import { ComponentMeta, ComponentStory } from "@showcasejs/react";
+
 import { Button } from './Button';
 
 export default {
   title: 'Button',
   component: Button,
-};
+} as ComponentMeta<typeof Button>;
 
-export const Primary = () => <Button>Primary</Button>;
+export const Primary: ComponentStory<typeof Button> = () => <Button>Primary</Button>;
 ```
 
 Much of the syntax is the same as Storybook.

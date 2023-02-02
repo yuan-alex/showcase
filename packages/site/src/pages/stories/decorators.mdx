@@ -4,6 +4,7 @@ Adding a decorator to a story will wrap the story in the decorator. In the examp
 
 ```tsx
 import { Button, ThemeProvider } from "@primer/react";
+import { ComponentMeta } from "@showcasejs/react";
 
 export default {
   title: "Button",
@@ -15,6 +16,6 @@ export default {
       </ThemeProvider>
     ),
   ],
-};
+} as ComponentMeta<typeof Button>;
 ```
 

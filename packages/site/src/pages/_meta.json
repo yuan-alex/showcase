@@ -12,10 +12,13 @@
   "quickstart": {
     "title": "Quickstart"
   },
+  "configuration": {
+    "title": "Configuration"
+  },
   "stories": {
     "title": "Stories"
   },
-  "configuration": {
-    "title": "Configuration"
+  "visual-snapshots": {
+    "title": "Visual Snapshots"
   }
 }
