@@ -34,8 +34,7 @@
     "build": "pnpm build:api && pnpm build:cli && pnpm build:renderer",
     "build:api": "tsup ./src/api/api.ts --clean --format=cjs,esm --target=es2015 --out-dir=dist/api --dts",
     "build:cli": "tsup-node ./src/cli/cli.mts --clean --format=esm --target=node14 --out-dir=dist/cli",
-    "build:renderer": "tsx ./scripts/build-renderer.mts && pnpm build:tailwind",
-    "build:tailwind": "tailwindcss -i ./src/renderer/tailwind.css -o ./dist/renderer/public/static/tailwind.css",
+    "build:renderer": "tsx ./scripts/build-renderer.mts",
     "cli": "node ./dist/cli/cli.js"
   },
   "peerDependencies": {

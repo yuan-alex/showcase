@@ -8,8 +8,9 @@ export const Home = () => {
     <root.div>
       <link
         rel="stylesheet"
-        href="/static/tailwind.css"
-        referrerPolicy="no-referrer"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+        integrity="sha256-tq2XQC7duQPnpdenPuR6Z5IE773aRSGjkcutnfUJuTI="
+        crossOrigin="anonymous"
       />
       <div className="flex h-screen w-screen flex-row divide-x">
         <div className="w-80 flex-none bg-gray-50">

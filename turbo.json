@@ -2,6 +2,7 @@
   "pipeline": {
     "lint": {},
     "dev": {
+      "cache": false,
       "dependsOn": ["^dev"],
       "outputs": ["dist/**"]
     },
