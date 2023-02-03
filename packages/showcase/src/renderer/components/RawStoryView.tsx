@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
-import { stories } from "@showcasejs/internal/stories";
+import { preview, stories } from "@showcasejs/internal";
 
 interface RawStoryViewProps {
   component?: JSX.Element;
@@ -38,22 +38,32 @@ export const RawStoryView = (props: RawStoryViewProps) => {
     }
   }, [stories, storyId, searchParams]);
 
-  const decoratorWrapper = React.useCallback(
+  const decorate = React.useCallback(
     (element: JSX.Element) => {
-      const decorator = stories[componentName]["default"]?.decorators?.reduce(
-        (acc, curr) => curr(() => acc),
+      const globalDecorators = preview?.decorators || [];
+      const componentDecorators =
+        stories[componentName]["default"]?.decorators || [];
+      const storyDecorators =
+        stories[componentName][storyName]?.decorators || [];
+
+      const decorators = globalDecorators
+        .concat(componentDecorators)
+        .concat(storyDecorators)
+        .filter((d) => d != undefined);
+
+      return (
+        decorators?.reduce(
+          (accumulator, currentValue) => currentValue(() => accumulator),
+          element,
+        ) || element
       );
-      if (decorator) {
-        return decorator(() => element);
-      }
-      return element;
     },
     [componentName],
   );
 
   return (
     <main id="raw-story-view">
-      {decoratorWrapper(stories[componentName][storyName](storyProps))}
+      {decorate(stories[componentName][storyName](storyProps))}
     </main>
   );
 };

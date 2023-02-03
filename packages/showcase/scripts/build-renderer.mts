@@ -11,7 +11,7 @@ esbuild
       fileURLToPath(new URL("../src/renderer/index.tsx", import.meta.url)),
     ],
     outfile: fileURLToPath(
-      new URL("../dist/renderer/main.js", import.meta.url),
+      new URL("../dist/renderer/showcase.js", import.meta.url),
     ),
     bundle: true,
     platform: "browser",

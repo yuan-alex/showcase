@@ -1,8 +1,6 @@
-import * as vite from "vite";
+import { createCompileTarget, getStoryComponentPaths } from "./stories.mjs";
 
-import { createCompileTarget, getStoryComponentPaths } from "./stories.js";
-
-export const virtualModuleId = "virtual:@showcasejs/internal/stories";
+export const virtualModuleId = "virtual:@showcasejs/internal";
 export const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
 export default function showcaseStoriesPlugin() {

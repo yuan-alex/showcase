@@ -2,7 +2,7 @@
 import { hideBin } from "yargs/helpers";
 import yargs from "yargs/yargs";
 
-import { startDev } from "./commands.js";
+import { startDev } from "./commands.mjs";
 
 yargs(hideBin(process.argv))
   .scriptName("showcase")

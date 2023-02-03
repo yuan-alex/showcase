@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { stories } from "@showcasejs/internal/stories";
+import { stories } from "@showcasejs/internal";
 
 import { ArgsEditor } from "./ArgsEditor.js";
 

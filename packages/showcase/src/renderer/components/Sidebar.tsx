@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { stories } from "@showcasejs/internal/stories";
+import { stories } from "@showcasejs/internal";
 
 const SidebarComponent = ({
   storyComponentName,
@@ -16,7 +16,7 @@ const SidebarComponent = ({
   const [hidden, setHidden] = React.useState<boolean>(false);
 
   return (
-    <div key={storyComponentName}>
+    <div>
       <div
         className="cursor-pointer px-4 py-2 hover:bg-gray-200"
         onClick={() => setHidden((i) => !i)}
@@ -35,7 +35,10 @@ const SidebarComponent = ({
           {Object.keys(stories[storyComponentName])
             .filter((k) => k != "default")
             .map((storyName) => (
-              <Link to={`/stories/${storyComponentName}--${storyName}`}>
+              <Link
+                key={storyName}
+                to={`/stories/${storyComponentName}--${storyName}`}
+              >
                 <div className="flex w-full cursor-pointer items-center space-x-2 py-2 hover:bg-gray-200">
                   <BookmarkIcon className="ml-10 h-4 w-4 text-blue-500" />
                   <p key={storyName} className="text-xs">

@@ -6,9 +6,10 @@ import { fileURLToPath } from "node:url";
 import * as vite from "vite";
 
 import { ShowcaseConfig } from "../../api/api.js";
+import { createShowcaseLog } from "./utils.mjs";
 import viteReactShowcasePlugin, {
   resolvedVirtualModuleId,
-} from "./vite-plugin-react-showcase.js";
+} from "./vite-plugin-react-showcase.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -23,10 +24,13 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
     resolve: {
       alias: [
         {
-          find: "@showcasejs/internal/stories",
-          replacement: "virtual:@showcasejs/internal/stories",
+          find: "@showcasejs/internal",
+          replacement: "virtual:@showcasejs/internal",
         },
-        { find: "@", replacement: path.resolve(process.cwd()) },
+        {
+          find: "virtual:@showcasejs/internal/root",
+          replacement: path.resolve(process.cwd()),
+        },
       ],
     },
     plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
@@ -52,7 +56,8 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
     }),
   );
 
-  const storyFileCreateOrDeleteCallback = (path: string, event: string) => {
+  const reloadPluginModule = (path: string, event: string) => {
+    createShowcaseLog("Reloading stories");
     const storyModule = server.moduleGraph.getModuleById(
       resolvedVirtualModuleId,
     );
@@ -60,10 +65,10 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
       server.reloadModule(storyModule);
     }
   };
-
-  const watcher = chokidar.watch(path.join(process.cwd(), "**/*.stories.*"));
-  watcher.on("add", (path) => storyFileCreateOrDeleteCallback(path, "add"));
-  watcher.on("unlink", (path) =>
-    storyFileCreateOrDeleteCallback(path, "unlink"),
-  );
+  const watcher = chokidar.watch([
+    path.join(process.cwd(), "src/**/*.stories.{js,jsx,ts,tsx}"),
+    path.join(process.cwd(), ".showcase/**/*"),
+  ]);
+  watcher.on("add", (path) => reloadPluginModule(path, "add"));
+  watcher.on("unlink", (path) => reloadPluginModule(path, "unlink"));
 };

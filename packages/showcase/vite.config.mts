@@ -3,7 +3,9 @@ import path from "node:path";
 import url from "node:url";
 import { defineConfig } from "vite";
 
-import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase";
+
+
+import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase.mjs";
 
 export default defineConfig({
   publicDir: url.fileURLToPath(
@@ -18,10 +20,13 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: "@showcasejs/internal/stories",
-        replacement: "virtual:@showcasejs/internal/stories",
+        find: "@showcasejs/internal",
+        replacement: "virtual:@showcasejs/internal",
       },
-      { find: "@", replacement: path.resolve(process.cwd()) },
+      {
+        find: "virtual:@showcasejs/internal/root",
+        replacement: path.resolve(process.cwd()),
+      },
     ],
   },
   plugins: [react(), showcaseStoriesPlugin()],

@@ -13,7 +13,7 @@ function RawStoryErrorBoundary() {
   let error = useRouteError();
   console.error(error);
   return (
-    <div className="h-full w-full bg-red-200">
+    <div className="h-full w-full bg-red-200 p-2">
       <p>Error rendering story. Check the console for more details.</p>
     </div>
   );

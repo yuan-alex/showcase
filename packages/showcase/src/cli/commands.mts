@@ -1,5 +1,5 @@
-import { startViteServer } from "./utils/bundlers.js";
-import { createShowcaseLog, getShowcaseConfig } from "./utils/utils.js";
+import { startViteServer } from "./utils/bundlers.mjs";
+import { createShowcaseLog, getShowcaseConfig } from "./utils/utils.mjs";
 
 export const startDev = async () => {
   const config = await getShowcaseConfig();
