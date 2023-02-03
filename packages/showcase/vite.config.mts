@@ -3,8 +3,6 @@ import path from "node:path";
 import url from "node:url";
 import { defineConfig } from "vite";
 
-
-
 import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase.mjs";
 
 export default defineConfig({
@@ -15,7 +13,14 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    outDir: url.fileURLToPath(new URL("./dist/renderer", import.meta.url)),
+    outDir: url.fileURLToPath(new URL("./dist/showcase", import.meta.url)),
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+        },
+      },
+    },
   },
   resolve: {
     alias: [
@@ -24,7 +29,7 @@ export default defineConfig({
         replacement: "virtual:@showcasejs/internal",
       },
       {
-        find: "virtual:@showcasejs/internal/root",
+        find: "@showcasejs/root",
         replacement: path.resolve(process.cwd()),
       },
     ],

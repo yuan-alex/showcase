@@ -83,10 +83,9 @@ export const StoryView = () => {
             />
           ) : (
             <div className="p-5">
-              <h3 className="text-sm font-medium">No arguments</h3>
+              <h3 className="text-md font-medium">No arguments</h3>
               <p className="mt-1 text-sm text-gray-500">
-                Add arguments to your story by adding them to the `args`
-                property.
+                Add argument types to your story using the `argTypes` property.
               </p>
             </div>
           )}

@@ -2,7 +2,7 @@
 import { hideBin } from "yargs/helpers";
 import yargs from "yargs/yargs";
 
-import { startDev } from "./commands.mjs";
+import { build, startDev } from "./commands.mjs";
 
 yargs(hideBin(process.argv))
   .scriptName("showcase")
@@ -20,8 +20,8 @@ yargs(hideBin(process.argv))
         default: ".showcase/dist",
       });
     },
-    (argv) => {
-      console.log(`Building showcase to ${argv.output}`);
+    async (argv) => {
+      await build();
     },
   )
   .help().argv;

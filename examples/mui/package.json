@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "showcase dev",
+    "build": "showcase build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

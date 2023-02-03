@@ -13,6 +13,37 @@ import viteReactShowcasePlugin, {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+export const buildVite = async (showcaseConfig?: ShowcaseConfig) => {
+  const defaultConfig: vite.UserConfig = {
+    root: path.join(__dirname, "../renderer"),
+    build: {
+      outDir: path.join(process.cwd(), "dist/showcase"),
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom"],
+          },
+        },
+      },
+    },
+    resolve: {
+      alias: [
+        {
+          find: "@showcasejs/internal",
+          replacement: "virtual:@showcasejs/internal",
+        },
+        {
+          find: "virtual:@showcasejs/internal/root",
+          replacement: path.resolve(process.cwd()),
+        },
+      ],
+    },
+    plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
+  };
+  createShowcaseLog("Building production bundle with Vite");
+  vite.build(defaultConfig);
+};
+
 export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
   const defaultConfig: vite.UserConfig = {
     root: path.join(__dirname, "../renderer"),
@@ -28,7 +59,7 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
           replacement: "virtual:@showcasejs/internal",
         },
         {
-          find: "virtual:@showcasejs/internal/root",
+          find: "@showcasejs/root",
           replacement: path.resolve(process.cwd()),
         },
       ],
@@ -47,13 +78,16 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
   await server.listen();
 
   console.log(
-    boxen(`Started server on port ${server.config.server.port}`, {
-      padding: 1,
-      title: "Showcase",
-      titleAlignment: "left",
-      borderColor: "blue",
-      borderStyle: "round",
-    }),
+    boxen(
+      `Started Vite development server on port ${server.config.server.port}`,
+      {
+        padding: 1,
+        title: "Showcase",
+        titleAlignment: "left",
+        borderColor: "green",
+        borderStyle: "round",
+      },
+    ),
   );
 
   const reloadPluginModule = (path: string, event: string) => {
