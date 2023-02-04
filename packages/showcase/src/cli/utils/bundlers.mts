@@ -33,7 +33,7 @@ export const buildVite = async (showcaseConfig?: ShowcaseConfig) => {
           replacement: "virtual:@showcasejs/internal",
         },
         {
-          find: "virtual:@showcasejs/internal/root",
+          find: "@showcasejs/root",
           replacement: path.resolve(process.cwd()),
         },
       ],
