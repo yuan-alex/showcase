@@ -1,6 +1,6 @@
 {
   "index": {
-    "title": "Showcase",
+    "title": "Showcase.js",
     "theme": {
       "breadcrumb": false,
       "footer": false,
@@ -18,7 +18,7 @@
   "stories": {
     "title": "Stories"
   },
-  "visual-snapshots": {
-    "title": "Visual Snapshots"
+  "visual-regression-testing": {
+    "title": "Visual Regression Testing"
   }
 }

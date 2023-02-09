@@ -5,6 +5,49 @@ import { stories } from "@showcasejs/internal";
 
 import { ArgsEditor } from "./ArgsEditor.js";
 
+interface ViewportOption {
+  name: string;
+  styles: {
+    width: string | number;
+    height: string | number;
+  };
+  type?: string;
+}
+
+const MINIMAL_VIEWPORTS: { [key: string]: ViewportOption } = {
+  default: {
+    name: "Default",
+    styles: {
+      width: "100%",
+      height: "100%",
+    },
+  },
+  tablet: {
+    name: "Tablet",
+    styles: {
+      height: "1112px",
+      width: "834px",
+    },
+    type: "tablet",
+  },
+  mobile2: {
+    name: "Large mobile",
+    styles: {
+      height: "896px",
+      width: "414px",
+    },
+    type: "mobile",
+  },
+  mobile1: {
+    name: "Small mobile",
+    styles: {
+      height: "568px",
+      width: "320px",
+    },
+    type: "mobile",
+  },
+};
+
 export const StoryView = () => {
   const { storyId } = useParams();
   if (!storyId) {
@@ -20,7 +63,7 @@ export const StoryView = () => {
   const [encodedProps, setEncodedProps] = React.useState<string>(
     encodeURIComponent("{}"),
   );
-  const [viewportMode, setViewportMode] = React.useState<string>("desktop");
+  const [viewportMode, setViewportMode] = React.useState("default");
 
   React.useEffect(() => {
     const [componentName, storyName] = storyId.split("--");
@@ -34,41 +77,26 @@ export const StoryView = () => {
   }, [props]);
 
   return (
-    <div className="flex h-full flex-col divide-y">
-      <div className="flex h-12 p-2">
+    <div className="flex h-screen flex-col divide-y">
+      <div className="flex h-12 flex-none p-2">
         <select
           value={viewportMode}
           onChange={(event) => setViewportMode(event.target.value)}
           className="rounded border py-1 px-2 text-sm"
         >
-          <option value="desktop">Desktop</option>
-          <option value="tablet">Tablet</option>
-          <option value="mobile">Mobile</option>
+          {Object.keys(MINIMAL_VIEWPORTS).map((viewport) => (
+            <option value={viewport}>{MINIMAL_VIEWPORTS[viewport].name}</option>
+          ))}
         </select>
       </div>
-      <div
-        className={`flex flex-grow items-center justify-center ${
-          ["tablet", "mobile"].includes(viewportMode) ? "bg-gray-100 p-5" : ""
-        }`}
-      >
+      <div className="flex flex-grow justify-center overflow-y-auto bg-gray-100 p-3">
         <iframe
-          className={`h-full ${
-            ["tablet", "mobile"].includes(viewportMode)
-              ? "border bg-white shadow-xl"
-              : ""
-          }`}
+          className="border bg-white shadow-lg"
           src={`/stories/${storyId}/preview?props=${encodedProps}`}
-          style={{
-            width:
-              viewportMode === "tablet"
-                ? 810
-                : viewportMode === "mobile"
-                ? 410
-                : "100%",
-          }}
+          style={viewportMode ? MINIMAL_VIEWPORTS[viewportMode]?.styles : {}}
         />
       </div>
-      <div className="h-80 overflow-y-auto">
+      <div className="h-80 flex-none grow-0 overflow-y-auto">
         <div>
           {stories[componentName][storyName].argTypes ||
           stories[componentName]["default"].argTypes ? (

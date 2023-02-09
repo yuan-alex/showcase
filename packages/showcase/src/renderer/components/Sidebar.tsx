@@ -58,7 +58,7 @@ export const Sidebar = () => {
     <div className="flex h-full flex-col">
       <Link to="/">
         <div className="flex cursor-pointer items-center space-x-3 px-5 py-3">
-          <p className="text-xl">Showcase</p>
+          <p className="text-xl font-semibold">Showcase.js</p>
         </div>
       </Link>
       {Object.keys(stories).map((storyComponentName) => (

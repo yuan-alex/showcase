@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "timestamp": "2023-02-08T05:02:17.915Z"
+  },
+  "components": {
+    "Pricing": {
+      "stories": [
+        "Default"
+      ]
+    },
+    "SignIn": {
+      "stories": [
+        "Default"
+      ]
+    }
+  }
+}

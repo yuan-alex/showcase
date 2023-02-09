@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "timestamp": "2023-02-09T02:02:13.555Z"
+  },
+  "components": {
+    "BlankStory": {
+      "path": "src/renderer/components/BlankStory.stories.tsx",
+      "integrity": "sha256-V2id2ORD9pSmpQ4opFJqavpgwiQnQxwGZthOaCAqx9M=",
+      "stories": ["Default"]
+    }
+  }
+}

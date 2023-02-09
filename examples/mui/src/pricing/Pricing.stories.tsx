@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 import { ComponentMeta, ComponentStory } from "@showcasejs/react";
 
 import Pricing from "./Pricing";
@@ -12,4 +14,4 @@ const Template: ComponentStory<typeof Pricing> = (args) => (
   <Pricing {...args} />
 );
 
-export const Default = Template.bind({});
+export const Default: ComponentStory<typeof Pricing> = Template.bind({});

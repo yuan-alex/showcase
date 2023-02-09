@@ -9,11 +9,10 @@ By default, Showcase uses [Vite](https://github.com/vitejs/vite) to display bund
 ```js
 export default {
   bundler: {
-    type: "vite4",
     viteFinal: (config) => {
       let config = config;
       // do something with the config
-      config.plugins.push(somePlugin());
+      config.plugins.push(yourOwnPlugin());
       return config;
     }
   },
@@ -22,6 +21,8 @@ export default {
 
 ## Webpack
 
-Webpack support is in the works.
+Webpack support is in the works. This doesn't mean that you can't make Showcase work. If your project uses Webpack with `babel-loader` or `ts-loader`, Showcase may work right out of box. If you're using a custom Babel plugin, you can customize Showcase's Babel configuration using the `viteFinal` property.
 
-This doesn't mean that you can't make Showcase work. If your project uses Webpack with `babel-loader` or `ts-loader`, Showcase may work right out of box. If you're using a custom Babel plugin, you can customize Showcase's Babel configuration using the `viteFinal` property.
+## Next.js
+
+Next.js support is in the works. Next uses Webpack with SWC under the hood, so you can expect this feature to be stable around the same time as Webpack.

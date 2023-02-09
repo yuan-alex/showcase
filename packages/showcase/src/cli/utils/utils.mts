@@ -1,5 +1,4 @@
 import chalk from "chalk";
-import fs from "fs-extra";
 import path from "node:path";
 import url from "node:url";
 
@@ -9,13 +8,10 @@ export const configPath = path.resolve(process.cwd(), ".showcase/config.js");
 export const configUrl = url.pathToFileURL(configPath).toString();
 
 export const getShowcaseConfig = async () => {
-  if (!fs.existsSync(configPath)) {
-    return null;
-  }
   const config = await import(configUrl);
-  return config.default as ShowcaseConfig;
+  return config?.default as ShowcaseConfig | undefined;
 };
 
-export const createShowcaseLog = (log: string) => {
-  console.log(`${chalk.blue("[showcase]")} ${log}`);
+export const showcaseLog = (log: string) => {
+  console.log(`${chalk.blue.bold("[showcase]")} ${log}`);
 };

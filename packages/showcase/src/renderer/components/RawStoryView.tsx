@@ -62,8 +62,8 @@ export const RawStoryView = (props: RawStoryViewProps) => {
   );
 
   return (
-    <main id="raw-story-view">
+    <div id="raw-story-view">
       {decorate(stories[componentName][storyName](storyProps))}
-    </main>
+    </div>
   );
 };

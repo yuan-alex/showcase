@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 import url from "node:url";
 import { defineConfig } from "vite";
+import Inspect from "vite-plugin-inspect";
 
 import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase.mjs";
 
@@ -10,7 +11,7 @@ export default defineConfig({
     new URL("./dist/renderer/public", import.meta.url),
   ),
   server: {
-    port: 3000,
+    port: 6006,
   },
   build: {
     outDir: url.fileURLToPath(new URL("./dist/showcase", import.meta.url)),
@@ -34,5 +35,5 @@ export default defineConfig({
       },
     ],
   },
-  plugins: [react(), showcaseStoriesPlugin()],
+  plugins: [Inspect(), react(), showcaseStoriesPlugin()],
 });

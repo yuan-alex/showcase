@@ -1,18 +1,18 @@
 import { createCompileTarget, getStoryComponentPaths } from "./stories.mjs";
 
-export const virtualModuleId = "virtual:@showcasejs/internal";
-export const resolvedVirtualModuleId = "\0" + virtualModuleId;
+export const vitePluginId = "virtual:@showcasejs/internal";
+export const vitePluginResolvedId = "\0" + vitePluginId;
 
 export default function showcaseStoriesPlugin() {
   return {
     name: "vite-plugin-react-showcase",
     resolveId(id: string) {
-      if (id === virtualModuleId) {
-        return resolvedVirtualModuleId;
+      if (id === vitePluginId) {
+        return vitePluginResolvedId;
       }
     },
     async load(id: string) {
-      if (id === resolvedVirtualModuleId) {
+      if (id === vitePluginResolvedId) {
         const storyPaths = await getStoryComponentPaths();
         const compileTarget = createCompileTarget(storyPaths);
         return compileTarget;

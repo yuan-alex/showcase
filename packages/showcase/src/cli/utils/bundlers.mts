@@ -6,12 +6,34 @@ import { fileURLToPath } from "node:url";
 import * as vite from "vite";
 
 import { ShowcaseConfig } from "../../api/api.js";
-import { createShowcaseLog } from "./utils.mjs";
+import { showcaseLog } from "./utils.mjs";
 import viteReactShowcasePlugin, {
-  resolvedVirtualModuleId,
+  vitePluginResolvedId,
 } from "./vite-plugin-react-showcase.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export const viteDefaultConfig: vite.UserConfig = {
+  root: path.join(__dirname, "../renderer"),
+  cacheDir: path.resolve(process.cwd(), "node_modules/.vite"),
+  server: {
+    port: 6006,
+    host: "localhost",
+  },
+  resolve: {
+    alias: [
+      {
+        find: "@showcasejs/internal",
+        replacement: "virtual:@showcasejs/internal",
+      },
+      {
+        find: "@showcasejs/root",
+        replacement: path.resolve(process.cwd()),
+      },
+    ],
+  },
+  plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
+};
 
 export const buildVite = async (showcaseConfig?: ShowcaseConfig) => {
   const defaultConfig: vite.UserConfig = {
@@ -25,6 +47,7 @@ export const buildVite = async (showcaseConfig?: ShowcaseConfig) => {
           },
         },
       },
+      emptyOutDir: true,
     },
     resolve: {
       alias: [
@@ -40,39 +63,17 @@ export const buildVite = async (showcaseConfig?: ShowcaseConfig) => {
     },
     plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
   };
-  createShowcaseLog("Building production bundle with Vite");
+  showcaseLog("Building production bundle with Vite");
   vite.build(defaultConfig);
 };
 
 export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
-  const defaultConfig: vite.UserConfig = {
-    root: path.join(__dirname, "../renderer"),
-    cacheDir: path.resolve(process.cwd(), "node_modules/.vite"),
-    server: {
-      port: showcaseConfig?.server?.port || 3000,
-      host: showcaseConfig?.server?.host || "localhost",
-    },
-    resolve: {
-      alias: [
-        {
-          find: "@showcasejs/internal",
-          replacement: "virtual:@showcasejs/internal",
-        },
-        {
-          find: "@showcasejs/root",
-          replacement: path.resolve(process.cwd()),
-        },
-      ],
-    },
-    plugins: [viteReactPlugin(), viteReactShowcasePlugin()],
-  };
-
   const config = showcaseConfig?.bundler?.viteFinal
-    ? showcaseConfig?.bundler?.viteFinal(defaultConfig, {
+    ? showcaseConfig?.bundler?.viteFinal(viteDefaultConfig, {
         command: "serve",
         mode: "development",
       })
-    : defaultConfig;
+    : viteDefaultConfig;
 
   const server = await vite.createServer(config);
   await server.listen();
@@ -91,18 +92,22 @@ export const startViteServer = async (showcaseConfig?: ShowcaseConfig) => {
   );
 
   const reloadPluginModule = (path: string, event: string) => {
-    createShowcaseLog("Reloading stories");
-    const storyModule = server.moduleGraph.getModuleById(
-      resolvedVirtualModuleId,
-    );
+    showcaseLog("Reloading stories");
+    const storyModule = server.moduleGraph.getModuleById(vitePluginResolvedId);
     if (storyModule) {
       server.reloadModule(storyModule);
     }
   };
-  const watcher = chokidar.watch([
-    path.join(process.cwd(), "src/**/*.stories.{js,jsx,ts,tsx}"),
-    path.join(process.cwd(), ".showcase/**/*"),
-  ]);
+
+  const watcher = chokidar.watch(
+    [
+      path.join(process.cwd(), "src/**/*.stories.{js,jsx,ts,tsx}"),
+      path.join(process.cwd(), ".showcase/**/*"),
+    ],
+    { ignoreInitial: true },
+  );
   watcher.on("add", (path) => reloadPluginModule(path, "add"));
   watcher.on("unlink", (path) => reloadPluginModule(path, "unlink"));
+
+  return { server };
 };
