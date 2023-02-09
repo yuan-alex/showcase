@@ -1,5 +1,5 @@
 {
-  "framework": "null",
+  "framework": null,
   "devCommand": "showcase dev",
   "buildCommand": "showcase build",
   "outputDirectory": "dist/showcase",
