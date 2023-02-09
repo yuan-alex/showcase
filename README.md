@@ -1,3 +1,5 @@
-# Showcase.js
+# Showcase.js CLI
 
-Showcase is a React UI component story visualizer from the future.
+Showcase.js is a React story visualizer and test framework. Using Showcase, you can build a storybook-like environment for your React components and perform visual regression tests using your own CI.
+
+View the [documentation](https://showcasejs.org).
