@@ -15,10 +15,11 @@ esbuild
     ),
     bundle: true,
     platform: "browser",
-    target: "es2016",
+    target: "es2015",
     format: "esm",
     logLevel: "info",
     packages: "external",
+    minify: true,
   })
   .then(() => {
     fs.copyFileSync(

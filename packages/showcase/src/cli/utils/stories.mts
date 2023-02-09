@@ -54,7 +54,7 @@ export const createMetaFile = async (): Promise<SnapshotObject> => {
     components: {},
   };
 
-  // transpile each story file to javascript so we can parse it
+  // transpile each story file to javascript, so we can parse it
   for (const id of Object.keys(storyPaths)) {
     const story = storyPaths[id];
     const storyFile = fsExtra.readFileSync(

@@ -12,7 +12,7 @@ export const createSnapshots = async () => {
 
   const meta = await createMetaFile();
 
-  showcaseLog(`🚀 Starting Vite server for snapshotting`);
+  showcaseLog(`🚀 Starting Vite server for snapshots`);
   const server = await vite.createServer(viteDefaultConfig);
   server.listen();
 

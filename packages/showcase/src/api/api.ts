@@ -1,7 +1,5 @@
 import { UserConfig } from "vite";
 
-type Browser = "chromium" | "firefox" | "webkit";
-
 export interface ShowcaseConfig {
   stories?: string[];
   server?: {
