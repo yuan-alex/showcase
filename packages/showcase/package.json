@@ -28,6 +28,7 @@
     "dist"
   ],
   "scripts": {
+    "preinstall": "touch ./dist/cli/cli.js",
     "dev:cli": "pnpm build:cli --watch",
     "dev:renderer": "concurrently \"pnpm vite\" \"pnpm build:renderer:windi --dev\"",
     "start:renderer": "concurrently \"vite ./dist/renderer --config=./vite.config.mts\" \"pnpm build:renderer:windi --dev\"",
