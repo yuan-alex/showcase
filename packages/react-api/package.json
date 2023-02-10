@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup --clean --minify --format=cjs,esm --target=es2015 src/index.tsx"
+    "build": "tsup --clean --minify --format=cjs,esm --target=es2015 src/index.tsx --dts"
   },
   "keywords": [],
   "license": "MIT",
