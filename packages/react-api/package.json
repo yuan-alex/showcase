@@ -1,24 +1,29 @@
 {
   "name": "@showcasejs/react",
   "version": "0.0.1",
-  "description": "",
+  "description": "React API for Showcase.js",
+  "author": "Alex Yuan",
+  "repository": "github:yuan-alex/showcase",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx"
+    "build": "tsup --clean --minify --format=cjs,esm --target=es2015 src/index.tsx"
   },
   "keywords": [],
   "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0"
+  },
   "devDependencies": {
     "@types/react": "^18.0.27",
-    "esbuild": "^0.17.4",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.4"
-  },
-  "dependencies": {
-    "react": "^18.2.0"
+    "esbuild": "^0.17.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.6.0",
+    "typescript": "^4.9.5"
   }
 }
