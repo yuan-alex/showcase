@@ -1,14 +1,18 @@
 {
   "meta": {
-    "timestamp": "2023-02-08T05:02:17.915Z"
+    "timestamp": "2023-02-11T04:33:05.010Z"
   },
   "components": {
     "Pricing": {
+      "path": "src/pricing/Pricing.stories.tsx",
+      "integrity": "sha256-BrnD02oZY2BRfMiaboqe4TSise5Dt4ThgV2/pETgYbM=",
       "stories": [
         "Default"
       ]
     },
     "SignIn": {
+      "path": "src/sign-in/SignIn.stories.tsx",
+      "integrity": "sha256-hLL7+OV84XeAPWLOhVu1PZpgmvxeV8w1wB9A6b3U2rc=",
       "stories": [
         "Default"
       ]

@@ -1,27 +1,19 @@
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import path from "node:path";
 import url from "node:url";
 import { defineConfig } from "vite";
 import Inspect from "vite-plugin-inspect";
 
-import showcaseStoriesPlugin from "./src/cli/utils/vite-plugin-react-showcase.mjs";
+import showcaseStoriesPlugin from "../../../cli/utils/vite-plugin-react-showcase.mjs";
 
 export default defineConfig({
-  publicDir: url.fileURLToPath(
-    new URL("./dist/renderer/public", import.meta.url),
+  cacheDir: url.fileURLToPath(
+    url.pathToFileURL(
+      path.join(process.cwd(), "node_modules/.cache/showcase/renderer"),
+    ),
   ),
   server: {
-    port: 6006,
-  },
-  build: {
-    outDir: url.fileURLToPath(new URL("./dist/showcase", import.meta.url)),
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          react: ["react", "react-dom"],
-        },
-      },
-    },
+    port: 6007,
   },
   resolve: {
     alias: [

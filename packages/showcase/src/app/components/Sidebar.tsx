@@ -5,13 +5,14 @@ import {
 } from "@heroicons/react/24/outline";
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { stories } from "@showcasejs/internal";
+import useSWR from "swr";
 
 const SidebarComponent = ({
-  storyComponentName,
+  componentName,
+  stories,
 }: {
-  storyComponentName: string;
+  componentName: string;
+  stories: string[];
 }) => {
   const [hidden, setHidden] = React.useState<boolean>(false);
 
@@ -27,17 +28,17 @@ const SidebarComponent = ({
           ) : (
             <ChevronDownIcon className="h-4 w-4" />
           )}
-          <p className="text-sm">{storyComponentName}</p>
+          <p className="text-sm">{componentName}</p>
         </div>
       </div>
       {!hidden && (
         <div className="flex flex-col">
-          {Object.keys(stories[storyComponentName])
+          {stories
             .filter((k) => k != "default")
             .map((storyName) => (
               <Link
                 key={storyName}
-                to={`/stories/${storyComponentName}--${storyName}`}
+                to={`/stories/${componentName}--${storyName}`}
               >
                 <div className="flex w-full cursor-pointer items-center space-x-2 py-2 hover:bg-gray-200">
                   <BookmarkIcon className="ml-10 h-4 w-4 text-blue-500" />
@@ -54,17 +55,29 @@ const SidebarComponent = ({
 };
 
 export const Sidebar = () => {
+  const {
+    data: meta,
+    error,
+    isLoading,
+  } = useSWR("http://localhost:6008/meta.json", {
+    refreshInterval: 1000,
+  });
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
   return (
     <div className="flex h-full flex-col">
       <Link to="/">
         <div className="flex cursor-pointer items-center space-x-3 px-5 py-3">
-          <p className="text-xl font-semibold">Showcase.js</p>
+          <p className="text-xl">Showcase.js</p>
         </div>
       </Link>
-      {Object.keys(stories).map((storyComponentName) => (
+      {Object.keys(meta?.components).map((componentName) => (
         <SidebarComponent
-          key={storyComponentName}
-          storyComponentName={storyComponentName}
+          key={componentName}
+          componentName={componentName}
+          stories={meta.components[componentName].stories}
         />
       ))}
     </div>

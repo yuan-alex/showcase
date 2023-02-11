@@ -3,7 +3,7 @@ import path from "node:path";
 import * as playwright from "playwright";
 import * as vite from "vite";
 
-import { viteDefaultConfig } from "./bundlers.mjs";
+import { getViteConfig } from "./bundlers.mjs";
 import { createMetaFile } from "./stories.mjs";
 import { showcaseLog } from "./utils.mjs";
 
@@ -12,12 +12,11 @@ export const createSnapshots = async () => {
 
   const meta = await createMetaFile();
 
-  showcaseLog(`🚀 Starting Vite server for snapshots`);
-  const server = await vite.createServer(viteDefaultConfig);
-  server.listen();
+  showcaseLog(`🚀 Starting rendering server for snapshots`);
+  const server = await vite.createServer(getViteConfig());
+  await server.listen();
 
   showcaseLog(`📸 Creating snapshots for chromium`);
-
   const browser = await playwright.chromium.launch({ headless: true });
   const page = await browser.newPage();
   for (const componentName of Object.keys(meta.components)) {

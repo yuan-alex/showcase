@@ -1,9 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { stories } from "@showcasejs/internal";
-
-import { ArgsEditor } from "./ArgsEditor.js";
+import { ArgsEditor } from "./ArgsEditor.jsx";
 
 interface ViewportOption {
   name: string;
@@ -54,27 +52,7 @@ export const StoryView = () => {
     return null;
   }
 
-  const [componentName, setComponentName] = React.useState(
-    storyId.split("--")[0],
-  );
-  const [storyName, setStoryName] = React.useState(storyId.split("--")[1]);
-
-  const [props, setProps] = React.useState({});
-  const [encodedProps, setEncodedProps] = React.useState<string>(
-    encodeURIComponent("{}"),
-  );
   const [viewportMode, setViewportMode] = React.useState("default");
-
-  React.useEffect(() => {
-    const [componentName, storyName] = storyId.split("--");
-    setComponentName(componentName);
-    setStoryName(storyName);
-    setProps(stories[componentName][storyName]?.args || {});
-  }, [stories, storyId]);
-
-  React.useEffect(() => {
-    setEncodedProps(encodeURIComponent(JSON.stringify(props)));
-  }, [props]);
 
   return (
     <div className="flex h-screen flex-col divide-y">
@@ -92,10 +70,11 @@ export const StoryView = () => {
       <div className="flex flex-grow justify-center overflow-y-auto bg-gray-100 p-3">
         <iframe
           className="border bg-white shadow-lg"
-          src={`/stories/${storyId}/preview?props=${encodedProps}`}
+          src={`http://localhost:6007/render/${storyId}`}
           style={viewportMode ? MINIMAL_VIEWPORTS[viewportMode]?.styles : {}}
         />
       </div>
+      {/*
       <div className="h-80 flex-none grow-0 overflow-y-auto">
         <div>
           {stories[componentName][storyName].argTypes ||
@@ -119,6 +98,7 @@ export const StoryView = () => {
           )}
         </div>
       </div>
+      */}
     </div>
   );
 };

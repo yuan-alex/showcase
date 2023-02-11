@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "timestamp": "2023-02-11T04:46:03.215Z"
+  },
+  "components": {
+    "App": {
+      "path": "src/App.stories.tsx",
+      "integrity": "sha256-0P4Wnwmk6NVPdBE8NYCAeqIfu7MUbsvD8elQBqHRbVQ=",
+      "stories": [
+        "Default"
+      ]
+    }
+  }
+}

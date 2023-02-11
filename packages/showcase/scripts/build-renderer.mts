@@ -1,17 +1,21 @@
 import esbuild from "esbuild";
 import fsExtra from "fs-extra";
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import url from "node:url";
 
-fsExtra.removeSync(fileURLToPath(new URL("../dist/renderer", import.meta.url)));
+fsExtra.removeSync(
+  url.fileURLToPath(new URL("../dist/renderer", import.meta.url)),
+);
 
 esbuild
   .build({
     entryPoints: [
-      fileURLToPath(new URL("../src/renderer/index.tsx", import.meta.url)),
+      url.fileURLToPath(
+        new URL("../src/renderer/react/vite/index.tsx", import.meta.url),
+      ),
     ],
-    outfile: fileURLToPath(
-      new URL("../dist/renderer/showcase.js", import.meta.url),
+    outfile: url.fileURLToPath(
+      new URL("../dist/renderer/react/vite/showcase.js", import.meta.url),
     ),
     bundle: true,
     platform: "browser",
@@ -23,7 +27,7 @@ esbuild
   })
   .then(() => {
     fs.copyFileSync(
-      new URL("../public/index.html", import.meta.url),
-      new URL("../dist/renderer/index.html", import.meta.url),
+      new URL("../public/renderer.html", import.meta.url),
+      new URL("../dist/renderer/react/vite/index.html", import.meta.url),
     );
   });
