@@ -1,6 +1,6 @@
 {
   "name": "@showcasejs/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A next-generation framework for React stories",
   "author": "Alex Yuan",
   "repository": "github:yuan-alex/showcase",
