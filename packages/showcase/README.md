@@ -14,16 +14,10 @@ pnpm i @showcasejs/cli --save-dev
 
 ### Usage
 
-Use `showcase dev` to start the development server. This will start a server on port 6006 by default.
+Use `showcase dev` to start the development server on port 6006.
 
 ```bash
 showcase dev
-```
-
-Use `showcase build` to build the showcase. This will build the showcase into the `dist/showcase` directory.
-
-```bash
-showcase build
 ```
 
 Use `showcase create-snapshots` to create visual regression tests. Images will be output in the `.showcase/snapshots` directory.
