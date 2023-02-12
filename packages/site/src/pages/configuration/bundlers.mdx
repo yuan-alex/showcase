@@ -1,10 +1,13 @@
 # Bundlers
 
-Showcase has first class support for Vite. It's the default bundler for Showcase.
+We minimize the amount of configuration you need to do by piggybacking off your pre-existing bundler. In most cases, no extra configuration is needed. If a supported configuration file is detected in the root directory of your project, Showcase will add in the minimum changes needed for the rendering engine.
 
-## Vite
+However, mistakes happen and sometimes you will want to correct the configruation.
 
-By default, Showcase uses [Vite](https://github.com/vitejs/vite) to display bundle your components. To change the Vite configuration, use the `viteFinal` property in your `.showcase/config.mjs`:
+
+## Vite 4
+
+Use the `viteFinal` property in your `.showcase/config.mjs`:
 
 ```js
 export default {
@@ -12,17 +15,24 @@ export default {
     viteFinal: (config) => {
       let config = config;
       // do something with the config
-      config.plugins.push(yourOwnPlugin());
       return config;
     }
   },
 };
 ```
 
-## Webpack
+## Webpack 5
 
-Webpack support is in the works. This doesn't mean that you can't make Showcase work. If your project uses Webpack with `babel-loader` or `ts-loader`, Showcase may work right out of box. If you're using a custom Babel plugin, you can customize Showcase's Babel configuration using the `viteFinal` property.
+Webpack support is in the works. This doesn't mean that you can't make Showcase work with Vite. If your project uses Webpack with `babel-loader` or `ts-loader`, Showcase may work right out of box. If you're using a custom Babel plugin, you can customize Showcase's Babel configuration using the `viteFinal` property.
 
-## Next.js
+## Next.js 13
 
 Next.js support is in the works. Next uses Webpack with SWC under the hood, so you can expect this feature to be stable around the same time as Webpack.
+
+## Rollup
+
+Rollup support is in the works. Vite uses Rollup under the hood.
+
+## Parcel 2
+
+Parcel support is in the works.
