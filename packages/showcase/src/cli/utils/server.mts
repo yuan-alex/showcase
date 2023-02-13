@@ -7,9 +7,7 @@ import * as vite from "vite";
 
 import { createMetaFile } from "./stories.mjs";
 
-export const startAppServer = async () => {
-  await createMetaFile();
-
+const startAppServer = async () => {
   // this server is used to serve the app, so we don't have to bundle the entire app in dist
   const config: vite.InlineConfig = {
     root: url.fileURLToPath(new URL("../app", import.meta.url)),
@@ -20,7 +18,9 @@ export const startAppServer = async () => {
 
   const server = await vite.createServer(config);
   await server.listen();
+};
 
+export const startMetaServer = () => {
   const app = express();
   app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -31,6 +31,16 @@ export const startAppServer = async () => {
     res.sendFile(path.join(process.cwd(), ".showcase/meta.json"));
   });
   app.listen(6008);
+};
 
-  console.log(boxen(`Showcase.js started on port 6006.\nGo to http://localhost:6006 to get started.`, { padding: 1 }));
+export const startServers = async () => {
+  await createMetaFile();
+  await startAppServer();
+  startMetaServer();
+  console.log(
+    boxen(
+      `Showcase.js started on port 6006.\nGo to http://localhost:6006 to get started.`,
+      { padding: 1 },
+    ),
+  );
 };

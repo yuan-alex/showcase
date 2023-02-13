@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import * as vite from "vite";
 
 import { ShowcaseConfig } from "../../api/api.js";
-import { startAppServer } from "./server.mjs";
+import { startServers } from "./server.mjs";
 import { createMetaFile } from "./stories.mjs";
 import { showcaseLog } from "./utils.mjs";
 import viteReactShowcasePlugin, {
@@ -52,7 +52,7 @@ export const startViteRenderingServer = async (
       })
     : getViteConfig();
 
-  await startAppServer();
+  await startServers();
 
   const renderingServer = await vite.createServer(config);
   await renderingServer.listen();

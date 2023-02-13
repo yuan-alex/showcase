@@ -1,15 +1,20 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { SWRConfig } from "swr";
 
+import { BlankStory } from "./components/BlankStory.js";
 import { Home } from "./components/Home.jsx";
 import { StoryView } from "./components/StoryView.js";
 
 export const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "",
       element: <Home />,
       children: [
+        {
+          path: "/",
+          element: <BlankStory />,
+        },
         {
           path: "/stories/:storyId",
           element: <StoryView />,

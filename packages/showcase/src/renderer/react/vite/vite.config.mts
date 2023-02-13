@@ -9,7 +9,7 @@ import showcaseStoriesPlugin from "../../../cli/utils/vite-plugin-react-showcase
 export default defineConfig({
   cacheDir: url.fileURLToPath(
     url.pathToFileURL(
-      path.join(process.cwd(), "node_modules/.cache/showcase/renderer"),
+      path.join(process.cwd(), "node_modules/.cache/showcase/renderer/vite"),
     ),
   ),
   server: {
