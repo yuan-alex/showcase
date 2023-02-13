@@ -1,4 +1,7 @@
-node_modules/
+/dist/api
+/dist/app
+/dist/renderer
+
 /test-results/
 /playwright-report/
 /playwright/.cache/
