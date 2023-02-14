@@ -94,10 +94,11 @@ export const buildViteRenderingServer = async () => {
     showcaseConfig?.build?.outDir ?? "dist/showcase",
   );
 
-  const appConfig = {
+  const appConfig: vite.InlineConfig = {
     ...(await getDefaultViteConfig()),
     mode: "production",
     root: path.join(__dirname, "../app"),
+    publicDir: path.join(__dirname, "../app/public"),
     build: {
       outDir,
       emptyOutDir: true,

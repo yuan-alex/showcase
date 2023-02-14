@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react-swc";
 import path from "node:path";
+import url from "node:url";
 import { defineConfig } from "vite";
 
 import showcaseStoriesPlugin from "../cli/utils/vite-plugin-react-showcase.mjs";
@@ -18,6 +19,7 @@ const injectTailwindCDN = () => {
 
 export default defineConfig({
   cacheDir: path.join(process.cwd(), "node_modules/.cache/showcase/app/vite"),
+  publicDir: url.fileURLToPath(new URL("./public", import.meta.url)),
   server: {
     port: 6006,
   },

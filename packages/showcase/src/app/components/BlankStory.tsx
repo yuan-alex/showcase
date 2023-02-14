@@ -1,7 +1,9 @@
 export const BlankStory = () => {
   return (
     <div className="p-3 md:m-20 md:rounded-xl md:border md:p-10 md:shadow">
-      <p className="mb-6 text-2xl md:text-3xl font-semibold">👋 Welcome to Showcase.js</p>
+      <p className="mb-6 text-2xl font-semibold md:text-3xl">
+        👋 Welcome to Showcase.js
+      </p>
       <p className="md:text-lg">
         Showcase.js is a React story visualizer and test framework. Using
         Showcase, you can build a storybook-like environment for your React

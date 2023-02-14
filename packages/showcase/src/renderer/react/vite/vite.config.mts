@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react-swc";
 import path from "node:path";
+import url from "node:url";
 import { defineConfig } from "vite";
 import Inspect from "vite-plugin-inspect";
 
@@ -10,6 +11,7 @@ export default defineConfig({
     process.cwd(),
     "node_modules/.cache/showcase/renderer/vite",
   ),
+  publicDir: url.fileURLToPath(new URL("./public", import.meta.url)),
   server: {
     port: 6007,
   },

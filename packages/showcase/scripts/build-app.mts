@@ -24,3 +24,8 @@ fs.copyFileSync(
   new URL("../src/app/index.prod.html", import.meta.url),
   new URL("../dist/app/index.html", import.meta.url),
 );
+
+fsExtra.copySync(
+  url.fileURLToPath(new URL("../src/app/public", import.meta.url)),
+  url.fileURLToPath(new URL("../dist/app/public", import.meta.url)),
+);
