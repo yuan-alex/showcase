@@ -25,3 +25,9 @@ Use `showcase create-snapshots` to create visual regression tests. Images will b
 ```bash
 showcase create-snapshots
 ```
+
+Use `showcase build` to build the static site.
+
+```bash
+showcase build
+```
