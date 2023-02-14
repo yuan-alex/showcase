@@ -95,7 +95,7 @@ export const createMetaFile = async (): Promise<SnapshotObject> => {
     JSON.stringify(data, undefined, 2),
   );
 
-  showcaseLog("Meta file created at .showcase/meta.json");
+  showcaseLog("📁 Meta file created at .showcase/meta.json");
 
   return data;
 };

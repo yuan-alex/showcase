@@ -27,7 +27,7 @@ esbuild
   })
   .then(() => {
     fs.copyFileSync(
-      new URL("../public/renderer.html", import.meta.url),
+      new URL("../assets/renderer.html", import.meta.url),
       new URL("../dist/renderer/react/vite/index.html", import.meta.url),
     );
   });

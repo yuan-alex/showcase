@@ -1,4 +1,8 @@
+import react from "@vitejs/plugin-react-swc";
+import path from "node:path";
 import { defineConfig } from "vite";
+
+import showcaseStoriesPlugin from "../cli/utils/vite-plugin-react-showcase.mjs";
 
 const injectTailwindCDN = () => {
   return {
@@ -17,5 +21,17 @@ export default defineConfig({
   server: {
     port: 6006,
   },
-  plugins: [injectTailwindCDN()],
+  resolve: {
+    alias: [
+      {
+        find: "@showcasejs/internal",
+        replacement: "virtual:@showcasejs/internal",
+      },
+      {
+        find: "@showcasejs/root",
+        replacement: path.resolve(process.cwd()),
+      },
+    ],
+  },
+  plugins: [injectTailwindCDN(), showcaseStoriesPlugin(), react()],
 });

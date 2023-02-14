@@ -3,17 +3,17 @@ import path from "node:path";
 import * as playwright from "playwright";
 import * as vite from "vite";
 
-import { getViteConfig } from "./bundlers.mjs";
 import { createMetaFile } from "./stories.mjs";
 import { showcaseLog } from "./utils.mjs";
+import { getDefaultViteConfig } from "./vite.mjs";
 
 export const createSnapshots = async () => {
   fsExtra.removeSync(path.join(process.cwd(), ".showcase/snapshots"));
 
   const meta = await createMetaFile();
 
-  showcaseLog(`🚀 Starting rendering server for snapshots`);
-  const server = await vite.createServer(getViteConfig());
+  showcaseLog(`🚀 Starting Vite rendering server for snapshots`);
+  const server = await vite.createServer(getDefaultViteConfig());
   await server.listen();
 
   showcaseLog(`📸 Creating snapshots for chromium`);

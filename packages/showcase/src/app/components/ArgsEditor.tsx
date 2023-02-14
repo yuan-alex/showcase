@@ -1,4 +1,3 @@
-import CodeMirror from "@uiw/react-codemirror";
 import { HexColorPicker } from "react-colorful";
 
 import { ArgType } from "@showcasejs/react";
@@ -116,7 +115,7 @@ const RenderField = ({
       );
     case "object":
       return (
-        <CodeMirror
+        <textarea
           className="w-full rounded border"
           value={JSON.stringify(argValue, null, 2)}
           onChange={(value: string) => {

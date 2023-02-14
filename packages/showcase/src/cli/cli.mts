@@ -2,7 +2,7 @@
 import { hideBin } from "yargs/helpers";
 import yargs from "yargs/yargs";
 
-import { screenshot, startDev } from "./commands.mjs";
+import { build, screenshot, startDev } from "./commands.mjs";
 import { createMetaFile } from "./utils/stories.mjs";
 
 yargs(hideBin(process.argv))
@@ -10,6 +10,9 @@ yargs(hideBin(process.argv))
   .usage("$0 <cmd> [args]")
   .command("dev", "Run development server", async (argv) => {
     await startDev();
+  })
+  .command("build", "Build showcase", async (argv) => {
+    await build();
   })
   .command(
     "create-snapshots",

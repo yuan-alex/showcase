@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { ArgsEditor } from "./ArgsEditor.jsx";
+// import { ArgsEditor } from "./ArgsEditor.jsx";
 
 interface ViewportOption {
   name: string;
@@ -70,7 +70,9 @@ export const StoryView = () => {
       <div className="flex flex-grow justify-center overflow-y-auto bg-gray-100 p-3">
         <iframe
           className="border bg-white shadow-lg"
-          src={`http://localhost:6007/render/${storyId}`}
+          src={`${
+            import.meta.env.DEV ? "http://localhost:6007" : ""
+          }/render?storyId=${storyId}`}
           style={viewportMode ? MINIMAL_VIEWPORTS[viewportMode]?.styles : {}}
         />
       </div>

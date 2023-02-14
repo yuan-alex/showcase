@@ -5,7 +5,8 @@ import {
 } from "@heroicons/react/24/outline";
 import React from "react";
 import { Link } from "react-router-dom";
-import useSWR from "swr";
+
+import { stories } from "@showcasejs/internal";
 
 const SidebarComponent = ({
   componentName,
@@ -33,7 +34,7 @@ const SidebarComponent = ({
       </div>
       {!hidden && (
         <div className="flex flex-col">
-          {stories
+          {Object.keys(stories)
             .filter((k) => k != "default")
             .map((storyName) => (
               <Link
@@ -55,17 +56,6 @@ const SidebarComponent = ({
 };
 
 export const Sidebar = () => {
-  const {
-    data: meta,
-    error,
-    isLoading,
-  } = useSWR("http://localhost:6008/meta.json", {
-    refreshInterval: 1000,
-  });
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-
   return (
     <div className="flex h-full flex-col">
       <Link to="/">
@@ -73,11 +63,11 @@ export const Sidebar = () => {
           <p className="text-xl">Showcase.js</p>
         </div>
       </Link>
-      {Object.keys(meta?.components).map((componentName) => (
+      {Object.keys(stories).map((componentName) => (
         <SidebarComponent
           key={componentName}
           componentName={componentName}
-          stories={meta.components[componentName].stories}
+          stories={stories[componentName]}
         />
       ))}
     </div>

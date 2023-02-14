@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
 
 import { preview, stories } from "@showcasejs/internal";
 
@@ -9,11 +8,16 @@ interface RawStoryViewProps {
 }
 
 export const RawStoryView = (props: RawStoryViewProps) => {
-  const { storyId } = useParams();
-  const [searchParams] = useSearchParams();
+  const searchParams = new URLSearchParams(document.location.search);
 
+  const storyId = searchParams.get("storyId");
   if (!storyId) {
-    return null;
+    return (
+      <div style={{ padding: 20 }}>
+        <strong>Couldn't find this story</strong>
+        <p>Pick another one if you just deleted this story.</p>
+      </div>
+    );
   }
 
   const [a, b] = storyId.split("--");

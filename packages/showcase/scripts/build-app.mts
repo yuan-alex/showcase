@@ -14,7 +14,7 @@ esbuild.buildSync({
   ),
   bundle: true,
   platform: "browser",
-  target: "es2015",
+  target: "esnext",
   format: "esm",
   logLevel: "info",
   packages: "external",

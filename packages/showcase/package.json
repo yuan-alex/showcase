@@ -28,12 +28,11 @@
     "dist"
   ],
   "scripts": {
-    "dev": "concurrently \"pnpm dev:api\" \"pnpm dev:cli\" \"pnpm dev:app\" \"pnpm dev:renderer\" \"pnpm dev:server\"",
+    "dev": "concurrently \"pnpm dev:api\" \"pnpm dev:cli\" \"pnpm dev:app\" \"pnpm dev:renderer\"",
     "dev:api": "pnpm build:api --watch",
     "dev:app": "vite serve ./src/app --config=./src/app/vite.config.mts",
     "dev:cli": "pnpm build:cli --watch",
     "dev:renderer": "vite serve ./src/renderer/react/vite --config=./src/renderer/react/vite/vite.config.mts",
-    "dev:server": "tsx ./scripts/start-meta-server.mts",
     "build": "concurrently \"pnpm build:api\" \"pnpm build:cli\" \"pnpm build:app\" \"pnpm build:renderer\"",
     "build:app": "tsx ./scripts/build-app.mts && windicss ./src/app/**/*.tsx --preflight -to ./dist/app/windi.css",
     "build:api": "tsup ./src/api/api.ts --clean --minify --format=cjs,esm --target=es2015 --out-dir=dist/api --dts",
@@ -54,7 +53,6 @@
     "boxen": "^7.0.1",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
-    "express": "^4.18.2",
     "fs-extra": "^11.1.0",
     "globby": "^13.1.3",
     "handlebars": "^4.7.7",

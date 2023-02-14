@@ -6,6 +6,9 @@ export interface ShowcaseConfig {
     port?: number;
     host?: string;
   };
+  build?: {
+    outDir?: string;
+  };
   bundler?: {
     viteFinal?: (
       config: UserConfig,
