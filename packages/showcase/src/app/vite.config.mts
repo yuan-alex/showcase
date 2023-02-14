@@ -17,7 +17,7 @@ const injectTailwindCDN = () => {
 };
 
 export default defineConfig({
-  cacheDir: "node_modules/.cache/showcase/app/vite",
+  cacheDir: path.join(process.cwd(), "node_modules/.cache/showcase/app/vite"),
   server: {
     port: 6006,
   },
