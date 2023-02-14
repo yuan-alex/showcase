@@ -31,3 +31,14 @@ Add a new command to your `package.json` scripts:
 
 Then run `npm run showcase` or `yarn showcase` to start the development server.
 
+## Build showcase
+
+Add a new command to your `package.json` scripts:
+
+```bash
+"scripts": {
+  "showcase:build": "showcase build"
+}
+```
+
+Then run `npm run showcase:build` or `yarn showcase:build` to build the showcase. By default, the showcase will be built to the `./dist/showcase` directory. You can change the directory in the `.config` file by using the `build.outDir` default export property.
