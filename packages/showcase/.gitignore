@@ -1,7 +1,4 @@
-/dist/api
-/dist/app
-/dist/renderer
-/dist/showcase
+/dist
 
 /test-results/
 /playwright-report/
