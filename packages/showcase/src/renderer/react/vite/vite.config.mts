@@ -1,16 +1,14 @@
 import react from "@vitejs/plugin-react-swc";
 import path from "node:path";
-import url from "node:url";
 import { defineConfig } from "vite";
 import Inspect from "vite-plugin-inspect";
 
 import showcaseStoriesPlugin from "../../../cli/utils/vite-plugin-react-showcase.mjs";
 
 export default defineConfig({
-  cacheDir: url.fileURLToPath(
-    url.pathToFileURL(
-      path.join(process.cwd(), "node_modules/.cache/showcase/renderer/vite"),
-    ),
+  cacheDir: path.join(
+    process.cwd(),
+    "node_modules/.cache/showcase/renderer/vite",
   ),
   server: {
     port: 6007,
