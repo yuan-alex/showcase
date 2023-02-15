@@ -90,8 +90,8 @@ export const startViteRenderingServer = async (
 export const buildViteRenderingServer = async () => {
   const showcaseConfig = await getShowcaseConfig();
   const outDir = path.join(
-    process.cwd(),
-    showcaseConfig?.build?.outDir ?? "dist/showcase",
+    path.join(process.cwd(), ".showcase"),
+    showcaseConfig?.build?.outDir ?? "../dist/showcase",
   );
 
   const appConfig: vite.InlineConfig = {
