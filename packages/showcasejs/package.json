@@ -1,0 +1,20 @@
+{
+  "name": "showcasejs",
+  "version": "0.1.0",
+  "description": "A next-generation framework for React stories",
+  "author": "Alex Yuan",
+  "repository": "github:yuan-alex/showcase",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "react",
+    "stories",
+    "storybook"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@showcasejs/cli": "workspace:0.1.0"
+  }
+}

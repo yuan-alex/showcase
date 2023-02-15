@@ -9,7 +9,7 @@ View the [documentation](https://showcasejs.org).
 ### Installation
 
 ```bash
-pnpm i @showcasejs/cli --save-dev
+pnpm i showcasejs --save-dev
 ```
 
 ### Usage
