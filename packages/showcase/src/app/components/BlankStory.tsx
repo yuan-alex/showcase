@@ -1,6 +1,6 @@
 export const BlankStory = () => {
   return (
-    <div className="p-3 md:m-20 md:rounded-xl md:border md:p-10 md:shadow">
+    <div className="p-3 md:m-20 md:rounded-xl md:border md:p-10">
       <p className="mb-6 text-2xl font-semibold md:text-3xl">
         👋 Welcome to Showcase.js
       </p>
@@ -31,7 +31,7 @@ export const Primary: ComponentStory<typeof Button> = () => <Button>Primary</But
       </pre>
       <p className="mt-5 md:text-lg">
         For more information, check out the{" "}
-        <a className="underline" href="https://github.com/yuan-alex/showcase">
+        <a className="underline" href="https://showcasejs.org">
           documentation
         </a>
         .
