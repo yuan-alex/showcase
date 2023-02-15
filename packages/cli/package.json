@@ -34,7 +34,7 @@
     "dev:cli": "pnpm build:cli --watch",
     "dev:renderer": "vite serve ./src/renderer/react/vite --config=./src/renderer/react/vite/vite.config.mts",
     "build": "concurrently \"pnpm build:api\" \"pnpm build:cli\" \"pnpm build:app\" \"pnpm build:renderer\"",
-    "build:app": "tsx ./scripts/build-app.mts && windicss ./src/app/**/*.tsx --preflight -to ./dist/app/windi.css",
+    "build:app": "tsx ./scripts/build-app.mts && windicss ./src/app/**/*.tsx --preflight -m -to ./dist/app/windi.css",
     "build:api": "tsup ./src/api/api.ts --clean --minify --format=cjs,esm --target=es2015 --out-dir=dist/api --dts",
     "build:cli": "tsup-node ./src/cli/cli.mts --clean --minify --format=esm --target=node14 --out-dir=dist/cli",
     "build:renderer": "tsx ./scripts/build-renderer.mts",
