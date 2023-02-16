@@ -22,7 +22,7 @@ export const createSnapshots = async () => {
   for (const componentName of Object.keys(meta.components)) {
     for (const storyName of meta.components[componentName].stories) {
       await page.goto(
-        `${server.config.server.host}:${server.config.server.port}/stories/${componentName}--${storyName}/preview`,
+        `http://${server.config.server.host}:${server.config.server.port}/render?storyId=${componentName}--${storyName}`,
       );
       await page.screenshot({
         path: path.join(
