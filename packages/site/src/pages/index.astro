@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Next Generation React Stories">
+  <main>
+    <nav class="flex items-center px-5 lg:px-20 h-20 border-b shadow-sm">
+      <img class="w-7 h-7 mr-3" src="/icon.png" />
+      <p class="text-xl font-semibold flex-grow">Showcase.js</p>
+      <p class="text-lg font-semibold text-gray-500">
+        <a href="https://docs.showcasejs.org">Docs</a>
+      </p>
+      <p class="text-lg font-semibold text-gray-500 ml-10">
+        <a href="https://github.com/yuan-alex/showcase">GitHub</a>
+      </p>
+    </nav>
+    <div class="flex mt-40 mx-5 lg:mx-auto gap-x-20">
+      <div class="lg:w-1/2 mx-auto text-center">
+        <h1 class="text-6xl md:text-7xl xl:text-8xl font-bold mb-5 xl:mb-10">
+          Next Generation React Stories
+        </h1>
+        <p class="text-lg md:text-2xl text-gray-600">
+          Showcase is a React story visualizer and test framework. Build
+          storybook-like environments for your React components and perform
+          visual regression tests on your own compute.
+        </p>
+      </div>
+      <div class="hidden flex-grow">
+        <img class="w-52 h-52" src="/vite.svg" />
+      </div>
+    </div>
+    <div class="mt-52">
+      <p class="text-center font-semibold uppercase text-gray-600 mb-8">
+        Features
+      </p>
+      <div class="grid lg:grid-cols-3 mx-5 md:mx-32 xl:mx-56 gap-5 md:gap-10">
+        <a href="https://docs.showcasejs.org/configuration/bundlers">
+          <div
+            class="p-10 border shadow-sm hover:shadow-xl transition duration-300 rounded-xl text-center cursor-pointer"
+          >
+            <img class="w-24 h-24 mx-auto mb-10" src="/vite.svg" />
+            <p class="text-lg lg:text-3xl font-semibold mb-4">
+              Zero-config Vite support
+            </p>
+            <p class="text-lg text-gray-500">
+              Lightning fast HMR. Instant refresh. Showcase supports Vite
+              projects with zero extra config.
+            </p>
+          </div>
+        </a>
+        <a href="https://docs.showcasejs.org/stories/quickstart">
+          <div
+            class="p-10 border shadow-sm hover:shadow-xl transition duration-300 rounded-xl text-center cursor-pointer"
+          >
+            <img
+              class="w-24 h-24 mx-auto mb-10"
+              src="/storybook.svg"
+            />
+            <p class="text-lg lg:text-3xl font-semibold mb-4">
+              CSF Compatability
+            </p>
+            <p class="text-lg text-gray-500">
+              Showcase supports CSF, the same open standard for component
+              examples supported by Storybook.
+            </p>
+          </div>
+        </a>
+        <a
+          href="https://docs.showcasejs.org/visual-regression-testing/introduction"
+        >
+          <div
+            class="p-10 border shadow-sm hover:shadow-xl transition duration-300 rounded-xl text-center cursor-pointer"
+          >
+            <img
+              class="w-24 h-24 mx-auto mb-10"
+              src="/playwright.svg"
+            />
+            <p class="text-lg lg:text-3xl font-semibold mb-4">
+              Bring your own CI
+            </p>
+            <p class="text-lg text-gray-500">
+              Showcase's default VRT implementation is powered by Playwright.
+              You can use it with any CI provider you want.
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <footer class="flex mt-36 bg-black px-5 lg:px-52 py-10">
+      <p class="text-md text-white">
+        MIT {new Date().getFullYear()} © Alex Yuan.
+      </p>
+    </footer>
+  </main>
+</Layout>
