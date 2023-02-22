@@ -32,7 +32,7 @@ export const createSnapshots = async () => {
   for (const componentName of Object.keys(meta.components)) {
     for (const storyName of meta.components[componentName].stories) {
       await page.goto(
-        `http://localhost:6006/stories/${componentName}--${storyName}/preview`,
+        `http://localhost:6007/render?storyId=${componentName}--${storyName}`,
       );
 
       // or your custom screenshot implementation
