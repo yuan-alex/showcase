@@ -14,15 +14,15 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.9",
-    "@mui/material": "^5.11.10",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@showcasejs/cli": "workspace:*",
     "@showcasejs/react": "workspace:*",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11"
   }
 }
