@@ -174,7 +174,7 @@ function PricingContent() {
         >
           Quickly build an effective pricing table for your potential customers
           with this layout. It&apos;s built with default MUI components with
-          little customization.
+          little customization. TEST MESSAGE!
         </Typography>
       </Container>
       {/* End hero unit */}
